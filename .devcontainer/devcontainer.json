@@ -1,0 +1,63 @@
+{
+  "name": "Events Manager Development",
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "8.0"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    },
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "ms-azuretools.vscode-azurefunctions",
+        "Vue.volar",
+        "@vue/language-server",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-typescript-next",
+        "humao.rest-client",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-json"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit"
+        },
+        "typescript.preferences.importModuleSpecifier": "relative",
+        "vue.codeActions.enabled": true,
+        "files.associations": {
+          "*.vue": "vue"
+        }
+      }
+    }
+  },
+
+  "forwardPorts": [5173, 7071],
+  "portsAttributes": {
+    "5173": {
+      "label": "Frontend (Vue.js)",
+      "onAutoForward": "notify"
+    },
+    "7071": {
+      "label": "Backend (Azure Functions)",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postStartCommand": "bash .devcontainer/start-services.sh",
+
+  "remoteUser": "codespace"
+}
