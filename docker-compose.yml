@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "7071:80"
+    environment:
+      - AzureWebJobsStorage=UseDevelopmentStorage=true
+      - FUNCTIONS_WORKER_RUNTIME=dotnet-isolated
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/api/events"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    environment:
+      - VITE_API_BASE_URL=http://localhost:7071/api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+networks:
+  default:
+    name: events-network

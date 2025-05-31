@@ -1,0 +1,80 @@
+version: 2
+updates:
+  # Backend dependencies (.NET/NuGet)
+  - package-ecosystem: "nuget"
+    directory: "/backend"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "backend"
+      prefix-development: "backend"
+      include: "scope"
+
+  # Frontend dependencies (npm)
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "frontend"
+      prefix-development: "frontend"
+      include: "scope"
+
+  # GitHub Actions dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "ci"
+      prefix-development: "ci"
+      include: "scope"
+
+  # Docker dependencies
+  - package-ecosystem: "docker"
+    directory: "/backend"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "docker"
+      prefix-development: "docker"
+      include: "scope"
+
+  - package-ecosystem: "docker"
+    directory: "/frontend"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "kvaes"
+    assignees:
+      - "kvaes"
+    commit-message:
+      prefix: "docker"
+      prefix-development: "docker"
+      include: "scope"
