@@ -1,0 +1,163 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Event": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the event"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the event",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "location": {
+          "type": "string",
+          "description": "Location where the event takes place",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of the event (YYYY-MM-DD)"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "time",
+          "description": "Start time of the event (HH:MM)"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the event was created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the event was last updated"
+        }
+      },
+      "required": ["name", "location", "date", "startTime"],
+      "additionalProperties": false
+    },
+    "EventCreateRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "time"
+        }
+      },
+      "required": ["name", "location", "date", "startTime"],
+      "additionalProperties": false
+    },
+    "EventUpdateRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Registration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the registration"
+        },
+        "eventId": {
+          "type": "string",
+          "description": "ID of the event being registered for"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the registrant",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the registrant"
+        },
+        "pronouns": {
+          "type": "string",
+          "description": "Preferred pronouns of the registrant",
+          "maxLength": 50
+        },
+        "optInCommunication": {
+          "type": "boolean",
+          "description": "Boolean indicating if registrant opted in for further communication"
+        },
+        "registeredAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the registration was created"
+        }
+      },
+      "required": ["eventId", "name", "email", "pronouns", "optInCommunication"],
+      "additionalProperties": false
+    },
+    "RegistrationCreateRequest": {
+      "type": "object",
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "pronouns": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "optInCommunication": {
+          "type": "boolean"
+        }
+      },
+      "required": ["eventId", "name", "email", "pronouns", "optInCommunication"],
+      "additionalProperties": false
+    }
+  }
+}
