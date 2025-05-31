@@ -11,6 +11,7 @@ GitHub Codespaces provides a complete development environment in the cloud, acce
 ### Opening a Codespace
 
 1. **From the GitHub Repository**
+
    - Navigate to https://github.com/kvaes/kvaestest
    - Click the green "Code" button
    - Select the "Codespaces" tab
@@ -27,6 +28,7 @@ GitHub Codespaces provides a complete development environment in the cloud, acce
 When your Codespace opens for the first time:
 
 1. **Wait for automatic setup** (2-3 minutes)
+
    - Dependencies will be automatically installed
    - Development servers will be configured
    - Extensions will be loaded
@@ -65,6 +67,7 @@ Your Codespace comes with these VS Code extensions:
 The Codespace is configured to automatically start both services:
 
 1. **Check running services**
+
    ```bash
    # The following should show running processes:
    ps aux | grep -E "(func|npm)"
@@ -81,6 +84,7 @@ The Codespace is configured to automatically start both services:
 If services aren't running automatically:
 
 1. **Start the backend**
+
    ```bash
    cd backend
    func start --port 7071
@@ -132,18 +136,20 @@ npm run build
 
 GitHub Codespaces automatically forwards these ports:
 
-| Service | Port | URL | Description |
-|---------|------|-----|-------------|
+| Service  | Port | URL            | Description               |
+| -------- | ---- | -------------- | ------------------------- |
 | Frontend | 5173 | Auto-generated | Vue.js development server |
-| Backend | 7071 | Auto-generated | Azure Functions runtime |
+| Backend  | 7071 | Auto-generated | Azure Functions runtime   |
 
 ### Accessing Your Application
 
 1. **View forwarded ports**
+
    - Go to the "Ports" tab in VS Code
    - Or use Ctrl+Shift+` / Cmd+Shift+`
 
 2. **Open application**
+
    - Click the globe icon next to port 5173 for the frontend
    - Click the globe icon next to port 7071 for backend API
 
@@ -214,17 +220,19 @@ curl -X POST http://localhost:7071/api/registrations \
 Your Codespace supports Docker development:
 
 1. **Build containers**
+
    ```bash
    # Build backend container
    cd backend
    docker build -t events-backend .
-   
+
    # Build frontend container
    cd ../frontend
    docker build -t events-frontend .
    ```
 
 2. **Run with Docker Compose**
+
    ```bash
    # Create a simple docker-compose.yml
    cat > docker-compose.dev.yml << EOF
@@ -237,7 +245,7 @@ Your Codespace supports Docker development:
        environment:
          - AzureWebJobsStorage=UseDevelopmentStorage=true
          - FUNCTIONS_WORKER_RUNTIME=dotnet-isolated
-     
+
      frontend:
        build: ./frontend
        ports:
@@ -245,7 +253,7 @@ Your Codespace supports Docker development:
        depends_on:
          - backend
    EOF
-   
+
    # Start services
    docker compose -f docker-compose.dev.yml up --build
    ```
@@ -255,16 +263,19 @@ Your Codespace supports Docker development:
 ### Common Issues
 
 1. **Codespace won't start**
+
    - Wait a few minutes for initial setup
    - Refresh the browser if the environment seems stuck
    - Check GitHub status page for service issues
 
 2. **Ports not forwarding**
+
    - Check the "Ports" tab in VS Code
    - Manually forward ports: Ctrl+Shift+P → "Forward a Port"
    - Verify services are actually running
 
 3. **Backend compilation errors**
+
    ```bash
    cd backend
    dotnet clean
@@ -273,6 +284,7 @@ Your Codespace supports Docker development:
    ```
 
 4. **Frontend build issues**
+
    ```bash
    cd frontend
    rm -rf node_modules package-lock.json
@@ -288,10 +300,12 @@ Your Codespace supports Docker development:
 ### Performance Tips
 
 1. **Keep Codespace active**
+
    - Codespaces auto-suspend after 30 minutes of inactivity
    - Keep a terminal process running to prevent suspension
 
 2. **Optimize resource usage**
+
    - Close unused browser tabs
    - Stop unnecessary services when not needed
 
@@ -318,6 +332,7 @@ docker run -d --name events-db \
 For production-like testing:
 
 1. **Add repository secrets**
+
    - Go to repository Settings → Secrets and variables → Codespaces
    - Add secrets like `DATABASE_CONNECTION_STRING`
 
@@ -339,17 +354,20 @@ To modify the Codespace configuration:
 ### Development Workflow
 
 1. **Create feature branches**
+
    ```bash
    git checkout -b feature/new-functionality
    ```
 
 2. **Commit frequently**
+
    ```bash
    git add .
    git commit -m "Add new feature"
    ```
 
 3. **Push changes**
+
    ```bash
    git push origin feature/new-functionality
    ```
@@ -359,6 +377,7 @@ To modify the Codespace configuration:
 ### Resource Management
 
 1. **Stop your Codespace** when not in use
+
    - Go to https://github.com/codespaces
    - Stop inactive Codespaces to save on billing
 
@@ -371,9 +390,11 @@ To modify the Codespace configuration:
 If you encounter issues with Codespaces:
 
 1. **Check GitHub Docs**
+
    - [GitHub Codespaces Documentation](https://docs.github.com/en/codespaces)
 
 2. **Repository-specific help**
+
    - Check [local development guide](local-development.md)
    - Create an issue with "codespaces" label
 
