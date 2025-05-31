@@ -34,18 +34,21 @@ This application follows a microservices architecture with:
 ### Local Development
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/kvaes/kvaestest.git
    cd kvaestest
    ```
 
 2. **Start the backend**
+
    ```bash
    cd backend
    func start --port 7071
    ```
 
 3. **Start the frontend** (in a new terminal)
+
    ```bash
    cd frontend
    npm install
@@ -60,22 +63,25 @@ This application follows a microservices architecture with:
 
 ```bash
 # Build and run with Docker Compose
-docker-compose up --build
+docker compose up --build
 ```
 
 ## 🌟 Features
 
 ### Events Management
+
 - Create, read, update, and delete events
 - Filter events by date and location
 - Event details with registration capability
 
 ### Event Registration
+
 - User registration for events
 - Collect name, email, pronouns, and communication preferences
 - Registration confirmation
 
 ### API Features
+
 - RESTful API design
 - CORS support for web clients
 - Comprehensive error handling
@@ -95,6 +101,7 @@ Detailed documentation is available in the `/docs` folder:
 ## 🛠️ Technology Stack
 
 ### Backend
+
 - **.NET 8**: Runtime platform
 - **Azure Functions**: Serverless compute platform
 - **C#**: Programming language
@@ -102,6 +109,7 @@ Detailed documentation is available in the `/docs` folder:
 - **Data Annotations**: Input validation
 
 ### Frontend
+
 - **Vue.js 3**: Progressive JavaScript framework
 - **TypeScript**: Type-safe JavaScript
 - **Vue Router**: Client-side routing
@@ -109,6 +117,7 @@ Detailed documentation is available in the `/docs` folder:
 - **Vite**: Build tool and dev server
 
 ### DevOps
+
 - **GitHub Actions**: CI/CD automation
 - **Docker**: Containerization
 - **Dependabot**: Dependency management
@@ -117,6 +126,7 @@ Detailed documentation is available in the `/docs` folder:
 ## 🔧 Development
 
 ### Backend Development
+
 ```bash
 cd backend
 dotnet build          # Build the project
@@ -125,6 +135,7 @@ func start           # Start local development server
 ```
 
 ### Frontend Development
+
 ```bash
 cd frontend
 npm install          # Install dependencies
@@ -137,6 +148,7 @@ npm run lint        # Lint code
 ## 🧪 Testing
 
 ### Running Tests
+
 ```bash
 # Backend tests
 cd backend && dotnet test
@@ -153,10 +165,12 @@ cd frontend && npm run test:e2e
 The application is designed for containerized deployment:
 
 ### Container Images
+
 - Backend: `ghcr.io/kvaes/kvaestest/backend:latest`
 - Frontend: `ghcr.io/kvaes/kvaestest/frontend:latest`
 
 ### Production Deployment
+
 See [Deployment Guide](docs/deployment.md) for detailed instructions.
 
 ## 🤝 Contributing
@@ -164,6 +178,7 @@ See [Deployment Guide](docs/deployment.md) for detailed instructions.
 We welcome contributions! Please see our [Contributing Guidelines](docs/contributing.md) for details.
 
 ### Code of Conduct
+
 Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
 
 ## 📄 License
@@ -177,7 +192,7 @@ Please see our [Security Policy](.github/SECURITY.md) for information about repo
 ## 📊 Project Status
 
 - ✅ Backend API implementation
-- ✅ Frontend application 
+- ✅ Frontend application
 - ✅ CI/CD pipelines
 - ✅ Container builds
 - ✅ Documentation

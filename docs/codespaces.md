@@ -247,7 +247,7 @@ Your Codespace supports Docker development:
    EOF
    
    # Start services
-   docker-compose -f docker-compose.dev.yml up --build
+   docker compose -f docker-compose.dev.yml up --build
    ```
 
 ## Troubleshooting
